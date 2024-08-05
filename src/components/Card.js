@@ -1,7 +1,7 @@
 import React from "react";
 // logo
 import logoImg from "../img/logo.svg";
-// nike logo
+// show image
 import NikeImg from "../img/nike.png";
 // import framer hooks
 import { useMotionValue, useTransform, motion } from "framer-motion";
@@ -9,8 +9,8 @@ import { useMotionValue, useTransform, motion } from "framer-motion";
 const Card = () => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-100, 100], [30, -30]);
-  const rotateY = useTransform(y, [-100, 100], [-30, 30]);
+  const rotateX = useTransform(x,[-100, 100],[30, -30]);
+  const rotateY = useTransform(y,[-100, 100],[-30, 30]);
   const colors = [
     { value: "#b6a179" },
     { value: "#272425" },
@@ -21,10 +21,14 @@ const Card = () => {
 
   return (
     // card wrapper
-    <div style={{ perspective: 2000 }} className="flex justify-center items-center min-h-screen">
+    <div className="flex lg:justify-center ml-[60px] items-center min-h-[700px] -mt-12">
       {/* card */}
       <motion.div
-        style={{ x, y, rotateX, rotateY, z: 100 }}
+        style={{ 
+          x, y,
+           rotateX, rotateY, 
+           z: 100 
+          }}
         drag
         dragElastic={0.18}
         dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
@@ -62,10 +66,14 @@ const Card = () => {
             );
           })}
         </ul>
-        {/* card image*/}
+        {/* shoe image*/}
         <motion.div 
-          style={{ x, y, rotateX, rotateY, z: 100000 }}
-          className="absolute top-[200px] -right-[95px] w-[300px] h-[300px] transform">  
+          style={{ 
+            x, y,
+             rotateX, rotateY,
+              z: 100000 
+            }}
+          className="absolute top-[50px] -right-[220px] w-[500px] ">  
         <img src={NikeImg} alt="" draggable="false" />
       </motion.div>
     </motion.div>
